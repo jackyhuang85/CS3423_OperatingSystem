@@ -36,6 +36,7 @@
 #define SC_ThreadJoin   15
 #define SC_Add		42
 #define SC_MSG		100
+#define SC_PrintInt 	45
 
 #ifndef IN_ASM
 
@@ -51,7 +52,10 @@
 
 /* Stop Nachos, and print out performance stats */
 void Halt();			
- 
+
+/* Print some integers */
+void PrintInt(int number);
+
 /*
  * Add the two operants and return the result
  */ 
