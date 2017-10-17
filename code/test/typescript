@@ -1,0 +1,8 @@
+Script started on Thu 12 Oct 2017 07:46:18 PM CST
+]0;2017osteam12@lsalab:~/NachOS-4.0_MP1/code/test[?1034h[2017osteam12@lsalab test]$ ls
+a      consoleIO_test1    consoleIO_test2.c       [0m[38;5;34mconsoleIO_test_bonus.coff[0m  fileIO_test1    fileIO_test2.c  Makefile      script      sort     start.S
+add    consoleIO_test1.c  consoleIO_test_bonus    consoleIO_test_bonus.o     fileIO_test1.c  halt            Makefile.dep  segments.c  sort.c   typescript
+add.c  consoleIO_test2    consoleIO_test_bonus.c  DISK_0                     fileIO_test2    halt.c          matmult.c     shell.c     start.o
+[m]0;2017osteam12@lsalab:~/NachOS-4.0_MP1/code/test[2017osteam12@lsalab test]$ exit
+
+Script done on Thu 12 Oct 2017 07:46:26 PM CST

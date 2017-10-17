@@ -52,14 +52,46 @@ class FileSystem {
 	return TRUE; 
 	}
 
-    OpenFile* Open(char *name) {
+  OpenFile* Open(char *name) {
 	  int fileDescriptor = OpenForReadWrite(name, FALSE);
 
 	  if (fileDescriptor == -1) return NULL;
 	  return new OpenFile(fileDescriptor);
-      }
+  }
 
-    bool Remove(char *name) { return Unlink(name) == 0; }
+  int OpenWithId(char *name) {
+    int fileDescriptor = OpenForReadWrite(name, FALSE);
+
+    if (fileDescriptor == -1) return -1;
+    OpenFile *file = new OpenFile(fileDescriptor);
+    int fileId = file->GetFileId();
+    
+    if (fileId < 0 || fileId >= 20) return -1;
+    fileDescriptorTable[fileId] = file;
+    return fileId;
+  }
+
+  int WriteWithId(char *buffer, int size, int fileId) {
+    int numWritten = fileDescriptorTable[fileId]->Write(buffer, size);
+
+    return numWritten;
+  }
+  
+  int ReadWithId(char *buffer, int size, int fileId) {
+    int numRead = fileDescriptorTable[fileId]->Read(buffer, size);
+
+    return numRead;
+  }
+
+  int CloseWithId(int fileId) {
+    if (fileId < 0 || fileId >= 20) return 0;
+
+    delete fileDescriptorTable[fileId];
+    fileDescriptorTable[fileId] = NULL;
+    return 1;
+  }
+
+  bool Remove(char *name) { return Unlink(name) == 0; }
 
 	OpenFile *fileDescriptorTable[20];
 	

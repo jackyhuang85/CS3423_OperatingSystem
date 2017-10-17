@@ -19,7 +19,6 @@
 // Copyright (c) 1992-1996 The Regents of the University of California.
 // All rights reserved.  See copyright.h for copyright notice and limitation 
 // of liability and disclaimer of warranty provisions.
-#include "../userprog/synchconsole.h"
 #include "copyright.h"
 #include "interrupt.h"
 #include "main.h"
@@ -245,37 +244,41 @@ Interrupt::CreateFile(char *filename)
     return kernel->CreateFile(filename);
 }
 
+int
+Interrupt::OpenFile(char *filename)
+{
+    return kernel->Open(filename);
+}
+
+int
+Interrupt::WriteFile(char *buffer, int size, int fileId)
+{
+    return kernel->Write(buffer, size, fileId);
+}
+
+int
+Interrupt::ReadFile(char *buffer, int size, int fileId)
+{
+    return kernel->Read(buffer, size, fileId);
+}
+
+int
+Interrupt::CloseFile(int fileId)
+{
+    return kernel->Close(fileId);
+}
+
 //----------------------------------------------------------------------
 // Interrupt::PrintInt
 //	Print an Integer.
 //	For HW1 Part1.
 //
 //----------------------------------------------------------------------
-#ifndef MAX_NUM_LENGTH
-#define MAX_NUM_LENGTH 4
-#endif
+
 void 
 Interrupt::PrintInt(int number)
 {
-  char numToBePrint[MAX_NUM_LENGTH], neg;
-  int i, n;
-  
-  //cout << "Print integer: ";
-  neg = '-';
-  i = n = 0;
-  if (number < 0){
-    number = ~number + 1;
-    kernel->synchConsoleOut->PutChar(neg);
-  }
-  do{
-    numToBePrint[n] = (number % 10) + '0';
-    n++;
-    number /= 10;
-  } while (number != 0);
-  
-  for (i = n-1; i >= 0; i--){
-    kernel->synchConsoleOut->PutChar(numToBePrint[i]);
-  }
+  kernel->PrintInt(number);
 }
 
 //----------------------------------------------------------------------

@@ -308,4 +308,25 @@ int Kernel::CreateFile(char *filename)
 	return fileSystem->Create(filename);
 }
 
+void Kernel::PrintInt(int number){
+  synchConsoleOut->PutInt(number);
+}
 
+int Kernel::Open(char *filename)
+{
+   return fileSystem->OpenWithId(filename);
+}
+
+int Kernel::Write(char *buffer, int size, int fileId)
+{
+   return fileSystem->WriteWithId(buffer, size, fileId);
+}
+
+int Kernel::Read(char *buffer, int size, int fileId)
+{
+   return fileSystem->ReadWithId(buffer, size, fileId);
+}
+
+int Kernel::Close(int fileId){
+   return fileSystem->CloseWithId(fileId);
+}

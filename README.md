@@ -5,7 +5,7 @@ CS3423_OperatingSystem
 
 ### HW1
 
-#### Part 1
+#### Part 1 **(Finished!!)**
 * Implement `PrintInt(int number)` system call
 * You **should NOT** use standard library IO functions in any part of Nachos.
   * e.g.`putchar()`, `printf()`, `cout`, …

@@ -169,6 +169,12 @@ consoleIO_test2.o: consoleIO_test2.c
 consoleIO_test2: consoleIO_test2.o start.o
 	$(LD) $(LDFLAGS) start.o consoleIO_test2.o -o consoleIO_test2.coff
 	$(COFF2NOFF) consoleIO_test2.coff consoleIO_test2
+
+consoleIO_test_bonus.o: consoleIO_test_bonus.c
+	$(CC) $(CFLAGS) -c consoleIO_test_bonus.c
+consoleIO_test_bonus: consoleIO_test_bonus.o start.o
+	$(LD) $(LDFLAGS) start.o consoleIO_test_bonus.o -o consoleIO_test_bonus.coff
+	$(COFF2NOFF) consoleIO_test_bonus.coff consoleIO_test_bonus
 	
 fileIO_test1.o: fileIO_test1.c
 	$(CC) $(CFLAGS) -c fileIO_test1.c
