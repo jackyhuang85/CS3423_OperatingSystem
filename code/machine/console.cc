@@ -198,6 +198,8 @@ ConsoleOutput::PutInt(int num){
     
     if (neg == true)
       numToBePrint[n] = '-';
+    else
+      n++;
 
     WriteFile(writeFileNo, numToBePrint+n, sizeof(char) * (11-n));
     putBusy = TRUE;
