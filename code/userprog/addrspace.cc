@@ -92,7 +92,7 @@ AddrSpace::AddrSpace()
 
 AddrSpace::~AddrSpace()
 {
-   for (int x = 0; x < NumPhysPages; x++){
+   for (int x = 0; x < numPages; x++){
       usedPhyPage[pageTable[x].physicalPage] = false;
    }
    delete pageTable;
@@ -142,7 +142,7 @@ AddrSpace::Load(char *fileName)
     numPages = divRoundUp(size, PageSize);
     pageTable = new TranslationEntry[numPages];
     
-    for (int i = 0, j = 0; i < NumPhysPages; i++) {
+    for (int i = 0, j = 0; i < numPages; i++) {
 	    pageTable[i].virtualPage = i;	// for now, virt page # = phys page #
 	    while (usedPhyPage[j++] == true){}
       usedPhyPage[j-1] = true;
